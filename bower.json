@@ -2,6 +2,7 @@
   "name": "polymer-buy",
   "description": "buy",
   "main": "polymer-buy.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0"
   },
