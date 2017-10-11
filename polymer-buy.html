@@ -1,0 +1,71 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="polymer-buy">
+  <template>
+    <style>
+       :host {
+        display: block;
+        align-self: center;
+        grid-area: buy;
+        display: block;
+        outline: 3px dashed royalblue;
+        padding: 5px;
+      }
+      button {
+        background: none;
+        border: 1px solid gray;
+        border-radius: 20px;
+        cursor: pointer;
+        display: block;
+        font-size: 20px;
+        outline: none;
+        padding: 20px;
+        width: 100%;
+      }
+    </style>
+     <button type="button" on-click="Buy">buy for [[sku.price]]</button>
+  </template>
+
+  <script>
+    /**
+     * `polymer-buy`
+     * buy
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class PolymerBuy extends Polymer.Element {
+
+      constructor() {
+        super();
+        window.addEventListener('store:sku:change', this.update);
+      }
+
+      update(data) {
+        this.sku = data;
+      }
+      
+      Buy() {
+        this.dispatchEvent(new CustomEvent('buy:changed', {
+        bubbles: true,
+        detail: {
+            sku: this.sku
+        }
+      }));
+      }
+
+      static get is() { return 'polymer-buy'; }
+      static get properties() {
+        return {
+           sku: {
+            type: Object,
+            value: function() {return{};}
+          }
+        };
+      }
+    }
+
+    window.customElements.define(PolymerBuy.is, PolymerBuy);
+  </script>
+</dom-module>
