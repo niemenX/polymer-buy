@@ -1,0 +1,35 @@
+{
+  "entrypoint": "polymer-buy.html",
+  "fragments": [],
+  "sources": [
+    "bower.json",
+    "polymer-buy.html"
+  ],
+  "extraDependencies": [
+    "bower_components\\webcomponentsjs\\*.js"
+  ],
+  "builds": [
+    {
+      "name": "es5-bundled",
+      "js": {
+        "minify": true,
+        "compile": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true,
+      "addPushManifest": true,
+      "preset": "es5-bundled"
+    }
+  ],
+  "lint": {
+    "rules": [
+      "polymer-2"
+    ]
+  }
+}
