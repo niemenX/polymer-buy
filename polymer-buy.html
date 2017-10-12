@@ -1,6 +1,3 @@
-<script src="../webcomponentsjs/webcomponents-lite.js"></script>
-<link rel="import" href="../polymer/polymer-element.html">
-
 <dom-module id="polymer-buy">
   <template>
     <style>
@@ -40,15 +37,15 @@
 
       constructor() {
         super();
-        window.addEventListener('store:sku:change', this.update);
+        window.addEventListener('store:sku:changed', e => this.update(e));
       }
 
       update(data) {
-        this.sku = data;
+          this.sku = data.detail.variant;
       }
       
       Buy() {
-        this.dispatchEvent(new CustomEvent('buy:changed', {
+        window.dispatchEvent(new CustomEvent('buy:changed', {
         bubbles: true,
         detail: {
             sku: this.sku
